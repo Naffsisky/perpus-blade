@@ -13,15 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
-Route::get('/test', function () {
-    return view('heyo');                // routing untuk menampilkan view heyo.blade.php
-});
-Route::get('/spesial', function () {
-    return view('spesial.foru');        // routing untuk menampilkan view foru.blade.php
-});
-Route::get('/page/', function () {
-    return view('page.anggota');        // routing untuk menampilkan view anggota.blade.php
-});
+// Route::get('/', function () {
+//     return view('index');
+// });
+
+Route::get('/', 'App\Http\Controllers\ContohController@index'); // routing untuk menampilkan view welcome.blade.php
+
+// Route::get('/test', function () {
+//     return view('heyo');                // routing untuk menampilkan view heyo.blade.php
+// });
+// Route::get('/spesial', function () {
+//     return view('spesial.foru');        // routing untuk menampilkan view foru.blade.php
+// });
+Route::get('/data/anggota/', 'App\Http\Controllers\ContohController@anggota'); // routing untuk menampilkan view anggota.blade.php
+Route::get('/data/buku/', 'App\Http\Controllers\BukuController@buku');

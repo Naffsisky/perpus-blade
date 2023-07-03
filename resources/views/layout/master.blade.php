@@ -11,9 +11,11 @@
     <!-- include digunakan untuk menyertakan sebuah file kedalam script -->
     @include('layout.header')
     <!-- yield digunakan untuk menandai pada bagian itu akan ditempati potongan kode yang disebut section-->
-    @yield('sapa')
+    @yield('navbar')
     @yield('content')
-
+    <footer class="fixed-bottom">
+        @include('layout.footer')
+    </footer>
     <script src="{{ asset('/js/bootstrap.min.js') }}"></script>
 </body>
 </html>
