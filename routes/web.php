@@ -27,7 +27,12 @@ Route::get('/', 'App\Http\Controllers\ContohController@index'); // routing untuk
 // });
 Route::get('/data/anggota/', 'App\Http\Controllers\ContohController@anggota'); // routing untuk menampilkan view anggota.blade.php
 Route::get('/data/dashboard/', 'App\Http\Controllers\ContohController@dashboard'); // routing untuk menampilkan view dashboard.blade.php
+
 Route::get('/data/buku/', 'App\Http\Controllers\BukuController@buku');
 Route::get('/data/buku/create', 'App\Http\Controllers\BukuController@create')->name('buku.create');
 Route::post('/data/buku/', 'App\Http\Controllers\BukuController@store')->name('buku.store');
 Route::post('/data/buku/delete/{id}', 'App\Http\Controllers\BukuController@destroy')->name('buku.destroy');
+Route::get('/data/buku/edit/{id}', 'App\Http\Controllers\BukuController@edit')->name('buku.edit');
+Route::post('/data/buku/update/{id}', 'App\Http\Controllers\BukuController@update')->name('buku.update');
+Route::get('/data/buku/search', 'App\Http\Controllers\BukuController@search')->name('buku.search');
+

@@ -21,6 +21,13 @@
     @endsection
     @section('content')
     <div class="container">
+        @if(count($errors) > 0)
+        <ul class="alert alert-danger">
+            @foreach ($errors->all() as $error)
+            <li class="mx-3"> {{ $error }} </li>
+            @endforeach
+        </ul>
+        @endif
         <form method="POST" action="{{ route('buku.store') }}">
             @csrf
             <div class="mb-3">

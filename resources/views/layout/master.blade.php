@@ -8,6 +8,33 @@
     <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
 </head>
 <body>
+    <style>
+        html, body {
+        margin:0;
+        padding:0;
+        height:100%;
+        }
+
+        .container {
+        position:relative;
+        min-height: 100%;
+        }
+        .footer{
+            bottom: 0;
+            width: 100%;
+            position: fixed;
+            height:50px;
+            line-height:50px;
+            background:#3c3a3a;
+            color:#fff;
+            padding-left: 10px;
+        }
+        .custom-card-img {
+        width: auto;
+        height: 400px;
+        object-fit: cover;
+        }
+    </style>
     <!-- include digunakan untuk menyertakan sebuah file kedalam script -->
     @include('layout.header')
     @include('layout.navbar')

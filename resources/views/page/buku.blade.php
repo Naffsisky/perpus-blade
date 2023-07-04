@@ -21,8 +21,23 @@
     @endsection
     @section('content')
     <div class="container">
-        <h2 class="text-center mb-4">Data Buku</h2>
+        @if(Session::has('tambah'))
+            <div class="alert alert-success">
+                {{ Session::get('tambah') }}
+            </div>
+        @endif
+        @if(Session::has('edit'))
+            <div class="alert alert-info">
+                {{ Session::get('edit') }}
+            </div>
+        @endif
+        @if(Session::has('hapus'))
+            <div class="alert alert-danger">
+                {{ Session::get('hapus') }}
+            </div>
+        @endif
         <a href="{{ route('buku.create') }}" class="btn btn-primary mb-3">Tambah Buku</a>
+        <div class="table-responsive">
         <table class="table table-striped text-center">
             <tr>
                 <th>No</th>
@@ -35,25 +50,33 @@
                 <th>Harga</th>
                 <th>Aksi</th>
             </tr>
+            @php
+                $currentPage = $data_buku->currentPage();
+                $halaman = $data_buku->perPage();
+                $no = ($currentPage - 1) * $halaman + 1;
+            @endphp
             @foreach ($data_buku as $buku)
             <tr>
-                <td>{{ $loop->iteration }}</td>
+                <td>{{ $no++ }}</td>
                 <td>{{ $buku->judul }}</td>
                 <td>{{ $buku->penulis }}</td>
                 <td>{{ $buku->penerbit }}</td>
                 <td>{{ $buku->tahun_terbit }}</td>
                 <td>{{ $buku->kategori }}</td>
                 <td>{{ $buku->jumlah_buku }}</td>
-                <td>{{ $buku->harga }}</td>
+                <td>{{ number_format($buku->harga, 0, ',', '.') }}</td>
                 <td>
                     <form action="{{ route('buku.destroy', $buku->id) }}" method="POST"> @csrf
-                        <button class="btn btn-danger" onclick="return confirm('Apakah anda yakin?')">Hapus</a>
-
+                        <button class="btn btn-danger" onclick="return confirm('Apakah anda yakin?')">Hapus</button>
+                        <a href="{{ route('buku.edit', $buku->id) }}" class="btn btn-warning">Edit</a>
                     </form>
                 </td>
             </tr>
             @endforeach
         </table>
+        </div>
+        <div class="mt-4">{{ $data_buku->render("pagination::bootstrap-5") }}</div>
+    </div>
     @endsection
 </body>
 </html>

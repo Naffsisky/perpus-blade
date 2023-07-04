@@ -20,7 +20,9 @@
         </li>
     @endsection
     @section('content')
-    <p>Data Anggota Test</p>
+    <div class="container">
+        <p>Data Anggota Test</p>
+    </div>
     @endsection
 </body>
 </html>
