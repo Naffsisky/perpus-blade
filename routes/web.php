@@ -26,4 +26,8 @@ Route::get('/', 'App\Http\Controllers\ContohController@index'); // routing untuk
 //     return view('spesial.foru');        // routing untuk menampilkan view foru.blade.php
 // });
 Route::get('/data/anggota/', 'App\Http\Controllers\ContohController@anggota'); // routing untuk menampilkan view anggota.blade.php
+Route::get('/data/dashboard/', 'App\Http\Controllers\ContohController@dashboard'); // routing untuk menampilkan view dashboard.blade.php
 Route::get('/data/buku/', 'App\Http\Controllers\BukuController@buku');
+Route::get('/data/buku/create', 'App\Http\Controllers\BukuController@create')->name('buku.create');
+Route::post('/data/buku/', 'App\Http\Controllers\BukuController@store')->name('buku.store');
+Route::post('/data/buku/delete/{id}', 'App\Http\Controllers\BukuController@destroy')->name('buku.destroy');

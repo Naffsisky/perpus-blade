@@ -1,3 +1,4 @@
+@extends('layout.master')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +8,19 @@
     <title>Data Anggota Perpustakaan</title>
 </head>
 <body>
+    @section('navbar')
+        <li class="nav-item">
+            <a class="nav-link" href="/">Dashboard</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/data/anggota/">Data Anggota</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/data/buku/">Data Buku</a>
+        </li>
+    @endsection
+    @section('content')
     <p>Data Anggota Test</p>
-    <a href="../../">Back?</a>
+    @endsection
 </body>
 </html>

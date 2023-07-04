@@ -14,4 +14,8 @@ class ContohController extends Controller
     {
         return view('page.anggota');
     }
+    public function dashboard()
+    {
+        return view('index');
+    }
 }
