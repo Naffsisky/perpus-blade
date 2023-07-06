@@ -7,6 +7,9 @@ use App\Models\Buku;
 
 class BukuController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
     public function buku(){
         $batas = 10;
         $jumlah_buku = Buku::count();

@@ -16,6 +16,11 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('index');
 // });
+Auth::routes([
+    'register' => true,
+    'reset' => false,
+    'verify' => false,
+]);
 
 Route::get('/', 'App\Http\Controllers\ContohController@index'); // routing untuk menampilkan view welcome.blade.php
 
@@ -36,3 +41,12 @@ Route::get('/data/buku/edit/{id}', 'App\Http\Controllers\BukuController@edit')->
 Route::post('/data/buku/update/{id}', 'App\Http\Controllers\BukuController@update')->name('buku.update');
 Route::get('/data/buku/search', 'App\Http\Controllers\BukuController@search')->name('buku.search');
 
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/data/anggota', 'App\Http\Controllers\UserController@index');
+Route::get('/data/anggota/create', 'App\Http\Controllers\UserController@create')->name('user.create');
+Route::post('/data/anggota', 'App\Http\Controllers\UserController@store')->name('user.store');
+Route::post('/data/anggota/delete/{id}', 'App\Http\Controllers\UserController@destroy')->name('user.destroy');
+Route::get('/data/anggota/edit/{id}', 'App\Http\Controllers\UserController@edit')->name('user.edit');
+Route::post('/data/anggota/update/{id}', 'App\Http\Controllers\UserController@update')->name('user.update');
+Route::get('/data/anggota/search', 'App\Http\Controllers\UserController@search')->name('user.search');

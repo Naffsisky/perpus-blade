@@ -12,7 +12,7 @@
                     @yield('navbar')
                 </ul>
                     @yield('search')
-                    <a class="btn" href="">
+                    <a class="btn" href="/home">
                         <i class="fas fa-sign-out-alt"></i>
                     </a>
             </div>
