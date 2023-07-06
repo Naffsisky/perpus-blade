@@ -11,7 +11,12 @@
         <a class="nav-link" href="/data/buku/">Data Buku</a>
     </li>
 @endsection
-
+@section('search')
+    <form class="d-flex" role="search" action="" method=""> @csrf
+        <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search" name="cari">
+        <button class="btn btn-outline-success" type="text" >Search</button>
+    </form>
+@endsection
 @section('content')
     <div class="container">
         <h2 style="text-align: center" class="mb-4">Apa Itu Perpustakaan?</h2>

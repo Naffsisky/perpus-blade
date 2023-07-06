@@ -7,13 +7,11 @@ use App\Models\Buku;
 
 class BukuController extends Controller
 {
-    public function buku()
-    {
+    public function buku(){
         $batas = 10;
-        $cari = request()->cari;
         $jumlah_buku = Buku::count();
-        $data_buku = Buku::where('judul', 'like', "%" . $cari . "%")->paginate($batas);
-        // $data_buku = Buku::orderBy('id')->paginate($batas); Mengambil semua isi tabel gunakan Desc untuk mengurutkan dari terbesar ke terkecil
+        // $data_buku = Buku::where('judul', 'like', "%" . $cari . "%")->orderByRaw('CAST(jumlah_buku AS UNSIGNED)')->paginate($batas);
+        $data_buku = Buku::orderBy('judul')->paginate($batas); // Mengambil semua isi tabel gunakan Desc untuk mengurutkan dari terbesar ke terkecil
         return view('page.buku', compact('data_buku', 'jumlah_buku'));
     }
     public function create(){
@@ -60,5 +58,16 @@ class BukuController extends Controller
         $buku->harga = $request->harga;
         $buku->save();
         return redirect('/data/buku')->with('edit', 'Data Buku Berhasil Diubah');
+    }
+    public function search(Request $request){
+        $batas = 10;
+        $cari = $request->cari;
+        $jumlah_buku = Buku::count();
+        $data_buku = Buku::where('judul', 'like', "%" . $cari . "%")
+                        ->orWhere('penulis', 'like', "%" . $cari . "%")
+                        ->orWhere('kategori', 'like', "%" . $cari . "%")
+                        ->orWhere('penerbit', 'like', "%" . $cari . "%")
+                        ->orderBy('judul', 'asc')->paginate($batas);
+        return view('page.search', compact('data_buku', 'cari'));
     }
 }

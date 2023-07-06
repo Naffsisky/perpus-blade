@@ -26,7 +26,9 @@
         </form>
     @endsection
     @section('content')
+    @if(count($data_buku))
     <div class="container">
+        <div>Ditemukan <b>{{ $data_buku->total() }}</b> Data Dengan Kata <b>{{ $cari }}</b></div></br>
         @if(Session::has('tambah'))
             <div class="alert alert-success">
                 {{ Session::get('tambah') }}
@@ -82,6 +84,9 @@
         </table>
         </div>
         <div class="mt-4">{{ $data_buku->render("pagination::bootstrap-5") }}</div>
+        @else
+            <div class="alert alert-danger">Data tidak ditemukan</div>
+        @endif
     </div>
     @endsection
 </body>
